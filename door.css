@@ -51,7 +51,7 @@ body[data-mode=en] .go .l+.l:before,body[data-mode=th] .go .l+.l:before,body[dat
 /* The default is a linear document. JS adds the sticky, scenic drive. */
 .drive-track{position:relative;background:var(--night);color:var(--ink)}
 .drive-stage{position:relative;min-height:100svh;overflow:hidden;background:var(--night)}
-.js .drive-track{height:520svh}
+.js .drive-track{height:620svh}
 .js .drive-stage{position:sticky;top:0;height:100svh;min-height:520px}
 .drive-stops{position:relative;z-index:5;display:grid;grid-template-columns:minmax(0,1fr);gap:0;min-width:0}
 .js .drive-stops{position:absolute;inset:0;display:block;pointer-events:none}
@@ -196,3 +196,45 @@ html.js body.reduced-motion .drive-copy{max-width:760px}
   .drive-stop,.js .drive-stop,.js .drive-stop.is-active{position:relative!important;left:auto!important;top:auto!important;width:auto!important;max-height:none!important;padding:100px clamp(22px,7vw,110px) 55px!important;transform:none!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;overflow:visible!important;border-bottom:1px solid rgba(245,243,223,.15)}
   .linear-photo,.js .linear-photo{display:block!important}.photo-note,.js .photo-note{display:none!important}
 }
+
+/* ---- Community home (v3): illustrated scenes, a house at the road's end, blank pages. ---- */
+.scene-photo.art-solarpunk,.scene-photo.art-lakeside{filter:saturate(.85) contrast(1.02)}
+.scene-photo[data-photo="0"]{object-position:42% center}.scene-photo[data-photo="0"].is-active{opacity:.36}
+.scene-photo[data-photo="1"]{object-position:72% center}.scene-photo[data-photo="1"].is-active{opacity:.42}
+.scene-photo[data-photo="2"]{object-position:32% 75%}.scene-photo[data-photo="2"].is-active{opacity:.5}
+.scene-photo[data-photo="3"]{object-position:58% 75%}.scene-photo[data-photo="3"].is-active{opacity:.46}
+.scene-photo[data-photo="4"]{object-position:16% 70%}.scene-photo[data-photo="4"].is-active{opacity:.42}
+.scene-photo[data-photo="5"]{object-position:90% 75%}.scene-photo[data-photo="5"].is-active{opacity:.5}
+.home-at-road-end .home-glow{opacity:.12;transition:opacity 1.4s ease}
+.home-at-road-end .home-window,.home-at-road-end .home-door{opacity:.35;transition:opacity 1.4s ease}
+body[data-stop="2"] .home-glow,body[data-stop="3"] .home-glow{opacity:.3}
+body[data-stop="4"] .home-glow{opacity:.5}
+body[data-stop="5"] .home-glow{opacity:.85}
+body[data-stop="3"] .home-window,body[data-stop="4"] .home-window,body[data-stop="5"] .home-window{opacity:.9}
+body[data-stop="4"] .home-door{opacity:.7}
+body[data-stop="5"] .home-door{opacity:1}
+body[data-stop="4"] .home-window,body[data-stop="5"] .home-window,body[data-stop="5"] .home-door{fill:#fff3c4;filter:drop-shadow(0 0 5px #ffe28a) drop-shadow(0 0 12px rgba(255,217,138,.8))}
+.motion-paused .home-glow,.motion-paused .home-window,.motion-paused .home-door{transition:none}
+.name-seal{margin:-.4rem auto 1.2rem;text-align:center;font-family:"Noto Serif CJK SC","Songti SC",Georgia,serif;font-size:clamp(2.6rem,8vw,4.4rem);letter-spacing:.18em;line-height:1.1;color:#234a38}
+.section-lede{align-items:center;max-width:760px;margin:-.4rem auto 1.6rem;text-align:center;color:var(--forest-2)}
+.source-note{align-items:center;max-width:760px;margin:1.4rem auto 0;text-align:center;color:var(--forest-2);font-size:.85rem}
+.source-note a{color:#2c5a43;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;max-width:900px;margin:1.4rem auto 1.8rem;list-style:none}
+.chips li{gap:.05rem;padding:.55rem .95rem;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.42);color:#234a38;font-size:.86rem;line-height:1.35;text-align:center;align-items:center}
+.chips li .l+.l{font-size:.86em}
+.door.place{border-top:3px solid #8fa86a}
+.frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1rem}
+.frame{display:flex;flex-direction:column;gap:.7rem;min-width:0;padding:1.4rem;border:2px dashed #9aa98a;border-radius:20px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.34) 0 14px,rgba(255,255,255,.18) 14px 28px)}
+.frame h3,.frame h3.t{font-family:Georgia,"Times New Roman",serif;font-size:1.3rem;font-weight:400;line-height:1.15;color:#234a38}
+.frame h3 .l+.l{font-size:.78em}
+.frame .t{font-size:.9rem;color:var(--forest-2)}
+.frame .wait{margin-top:auto;align-self:flex-start;padding:.3rem .65rem;border-radius:999px;background:#f3e3b4;color:#4d3d10;font-size:.66rem;font-weight:750;letter-spacing:.04em}
+.blank .anthem{margin-top:1.8rem}
+@media(max-width:600px){
+  .scene-photo[data-photo="0"].is-active{opacity:.3}.scene-photo[data-photo="1"]{object-position:70% center}
+  .name-seal{letter-spacing:.1em}.chips li{font-size:.8rem;padding:.5rem .75rem}.frame{padding:1.15rem}
+}
+/* Titles are .t too; keep them title-sized (the generic ".door .t" rule used to shrink them to body size). */
+.door h3.t{font-size:1.45rem}
+.frame h3.t{font-size:1.3rem}
+@media(max-width:600px){.door h3.t{font-size:1.3rem}.frame h3.t{font-size:1.2rem}}

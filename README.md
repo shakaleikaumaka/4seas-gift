@@ -1,6 +1,6 @@
-# 4Seas — The Gift
+# 4Seas — 四海为家 · everywhere is home
 
-A dependency-free, trilingual drive through a living memory garden, with the complete classic Gift below it.
+A dependency-free, trilingual gift for the whole 4Seas community in Chiang Mai: a gentle six-stop drive home, with a complete quiet reading edition below it.
 
 ## Run locally
 
@@ -14,24 +14,29 @@ There is no build step, remote font, tracker, CDN, audio, or runtime third-party
 
 ## Journey and accessibility
 
-- Five stops: Gift, Memory, Circle, Code, and the road ahead.
+- Six stops: Home, the House, the Days, the Memory, Your pages (blank frames for the community), and the Gift. A small house waits where the road ends; its windows warm as the drive arrives.
 - Native vertical scrolling and touch swiping move the sticky scene; Back, Next, route markers, and arrow keys provide explicit controls. Tab is never trapped.
-- `prefers-reduced-motion` changes the drive to a static linear article with local photographs. The motion button independently pauses decorative animation.
-- Without JavaScript, every stop, translation, and photograph remains readable in linear form.
+- `prefers-reduced-motion` changes the drive to a static linear article. The motion button independently pauses decorative animation.
+- Without JavaScript, every stop, translation, and illustration remains readable in linear form.
 - English, Thai, and Simplified Chinese can be shown together or independently. The preference stays in local storage only.
 
-## Photographs
+## Facts and sources
 
-Responsive WebP derivatives in `assets/drive/` were made from photographs already published in the public Garden Circle history:
+Descriptions of the house (4Seas Nimman, Zuzalu Library, Mountain View, the shared spaces) and of everyday life there are summarized from the community's own home page, https://4seas.xyz/ (read 8 Nov 2026). The season of ETHChiangmai × 4Seas (8 Dec 2025 – 3 Feb 2026) is summarized from the public session list of the Pit, https://4seaspit.com/pit/. Nothing about individual people is stated or invented.
 
-- `2026-2026-10-19-dsc1264.webp` — Gift
-- `2026-2026-10-19-dsc1230.webp` — Memory
-- `2024-devcon-sea-photography-selection-123.webp` — Circle
-- `2024-devcon-sea-photography-selection-086.webp` — Code
-- `2026-2026-10-19-dsc1235.webp` — Road ahead
+## Blank pages
 
-The derivatives contain no source metadata. No NOMAD Market performer imagery, child imagery, private Drive URLs, or private proposal material is used. Takedown and correction links remain in the footer.
+`#blank-pages` holds six empty frames (`data-todo="…"`, each preceded by a `TODO(community)` comment). Fill them only with words the community sends, and photographs only with the yes of everyone in them (and a guardian's yes for any child).
+
+## Illustrations
+
+No photographs of people are used. Scene and linear illustrations are derivatives of two artworks already published on the 4Seas doors:
+
+- `assets/home/solarpunk-{750,1500}.webp` ← `assets/4seas-solarpunk-banner.jpg`
+- `assets/home/lakeside-{800,1600}.webp` ← `assets/eth-chiangmai-lakeside.webp`
+
+Derivatives contain no source metadata. Takedown and correction links remain in the footer.
 
 ## Deployment
 
-GitHub Pages serves the `main` branch at `https://4seas.org/`. Preserve `CNAME`, `robots.txt`, `sitemap.xml`, and `404.html` when replacing the experience.
+GitHub Pages serves the `main` branch at `https://4seas.org/`. Preserve `CNAME`, `robots.txt`, `sitemap.xml`, `404.html`, and the `OHANA-OPEN-DOOR-SEAL` block when replacing the experience.
