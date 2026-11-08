@@ -17,6 +17,35 @@
   root.setAttribute('data-detected',pref);
   var mode=query.get('lang')||savedLang||'all';
   if(['all','en','th','zh'].indexOf(mode)<0)mode='all';
+  /* Labels that are not visible text follow the chosen language too (ALL = English, the page's base language). */
+  var I18N={
+    drive:{en:'A drive home to 4Seas',th:'การเดินทางกลับบ้านที่ 4Seas',zh:'一段回到 4Seas 的旅程'},
+    controls:{en:'Journey controls',th:'ปุ่มควบคุมการเดินทาง',zh:'旅程控制'},
+    progress:{en:'Journey progress',th:'ความคืบหน้าของการเดินทาง',zh:'旅程进度'},
+    prev:{en:'Previous stop',th:'จุดแวะก่อนหน้า',zh:'上一站'},
+    next:{en:'Next stop',th:'จุดแวะถัดไป',zh:'下一站'},
+    home:{en:'Home',th:'หน้าแรก',zh:'家'},house:{en:'House',th:'บ้าน',zh:'房子'},days:{en:'Days',th:'วันเวลา',zh:'日子'},
+    memory:{en:'Memory',th:'ความทรงจำ',zh:'记忆'},yours:{en:'Yours',th:'ของคุณ',zh:'你们的'},gift:{en:'Gift',th:'ของขวัญ',zh:'礼物'},
+    stop0:{en:'Stop 1: Home',th:'จุดแวะที่ 1: หน้าแรก',zh:'第 1 站：家'},
+    stop1:{en:'Stop 2: The house',th:'จุดแวะที่ 2: บ้าน',zh:'第 2 站：房子'},
+    stop2:{en:'Stop 3: The days',th:'จุดแวะที่ 3: วันเวลา',zh:'第 3 站：日子'},
+    stop3:{en:'Stop 4: The memory',th:'จุดแวะที่ 4: ความทรงจำ',zh:'第 4 站：记忆'},
+    stop4:{en:'Stop 5: Yours — the blank pages',th:'จุดแวะที่ 5: ของคุณ — หน้าว่าง',zh:'第 5 站：你们的空白页'},
+    stop5:{en:'Stop 6: The gift',th:'จุดแวะที่ 6: ของขวัญ',zh:'第 6 站：礼物'},
+    reducedLabel:{en:'Reduced motion',th:'ลดการเคลื่อนไหว',zh:'减少动效'},
+    reducedTitle:{en:'Reduced motion is on; the journey is linear',th:'เปิดโหมดลดการเคลื่อนไหวอยู่ การเดินทางจะเรียงต่อกันเป็นหน้าเดียว',zh:'已开启减少动效，旅程按顺序排列'},
+    playLabel:{en:'Play motion',th:'เล่นภาพเคลื่อนไหว',zh:'播放动效'},
+    playTitle:{en:'Play decorative motion',th:'เล่นภาพเคลื่อนไหวประกอบ',zh:'播放装饰动效'},
+    pauseLabel:{en:'Pause motion',th:'หยุดภาพเคลื่อนไหว',zh:'暂停动效'},
+    pauseTitle:{en:'Pause decorative motion',th:'หยุดภาพเคลื่อนไหวประกอบ',zh:'暂停装饰动效'}
+  };
+  function t(key){var entry=I18N[key];if(!entry)return '';return entry[mode]||entry.en;}
+  var motionReady=false;
+  function applyI18n(){
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-aria]'),function(el){var v=t(el.getAttribute('data-i18n-aria'));if(v)el.setAttribute('aria-label',v);});
+    Array.prototype.forEach.call(document.querySelectorAll('[data-i18n]'),function(el){var v=t(el.getAttribute('data-i18n'));if(v)el.textContent=v;});
+    if(motionReady)renderMotion();
+  }
   var langButtons=Array.prototype.slice.call(document.querySelectorAll('.langbar button'));
   function setLanguage(next){
     mode=next;
@@ -28,6 +57,7 @@
       button.setAttribute('aria-pressed',String(active));
     });
     try{localStorage.setItem('4seas-lang',next);}catch(e){}
+    applyI18n();
   }
   langButtons.forEach(function(button){button.addEventListener('click',function(){setLanguage(button.dataset.mode);});});
   setLanguage(mode);
@@ -150,20 +180,20 @@
     motionButton.disabled=reduced;
     motionButton.setAttribute('aria-pressed',String(paused||reduced));
     if(reduced){
-      motionLabel.textContent='Reduced motion';
+      motionLabel.textContent=t('reducedLabel');
       motionIcon.textContent='—';
       motionButton.removeAttribute('aria-label');
-      motionButton.title='Reduced motion is on; the journey is linear';
+      motionButton.title=t('reducedTitle');
     }else if(paused){
-      motionLabel.textContent='Play motion';
+      motionLabel.textContent=t('playLabel');
       motionIcon.textContent='▶';
       motionButton.removeAttribute('aria-label');
-      motionButton.title='Play decorative motion';
+      motionButton.title=t('playTitle');
     }else{
-      motionLabel.textContent='Pause motion';
+      motionLabel.textContent=t('pauseLabel');
       motionIcon.textContent='Ⅱ';
       motionButton.removeAttribute('aria-label');
-      motionButton.title='Pause decorative motion';
+      motionButton.title=t('pauseTitle');
     }
     setStopAccessibility();
     requestUpdate();
@@ -178,6 +208,7 @@
   else if(reducedQuery.addListener)reducedQuery.addListener(renderMotion);
 
   activate(0);
+  motionReady=true;
   renderMotion();
   updateFromScroll();
 })();
