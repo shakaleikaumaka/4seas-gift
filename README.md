@@ -40,3 +40,7 @@ Derivatives contain no source metadata. Takedown and correction links remain in 
 ## Deployment
 
 GitHub Pages serves the `main` branch at `https://4seas.org/`. Preserve `CNAME`, `robots.txt`, `sitemap.xml`, `404.html`, and the `OHANA-OPEN-DOOR-SEAL` block when replacing the experience.
+
+## License
+
+Code: GPL-3.0 (see LICENSE). Songs, lyrics, chords, words, art, links and pages: CC BY-SA 4.0 (see LICENSE-CONTENT). Credit: Shaka Lei Kaumaka and the ʻohana.
